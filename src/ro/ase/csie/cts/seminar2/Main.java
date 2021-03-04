@@ -5,11 +5,26 @@ public class Main {
 	public static void main(String[] args) {
         CalendarUtil cu = new CalendarUtil();
 		
-		System.out.println(cu.weekdDay(3));
+		try {
+			System.out.println(cu.weekdDay(9));
+		} catch (IncorectDayException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		System.out.println(cu.weekDay2(3));
+		try {
+			System.out.println(cu.weekDay2(3));
+		} catch (IncorectDayException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		System.out.println(cu.weekDay3(3));
+		try {
+			System.out.println(cu.weekDay3(3));
+		} catch (IncorectDayException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

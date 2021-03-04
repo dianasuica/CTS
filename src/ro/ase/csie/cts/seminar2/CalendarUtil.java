@@ -5,7 +5,7 @@ public class CalendarUtil {
 	private String[] days = {"Sunday","Monday","Tuesday","Wednesday",
 			   "Tursday","Friday","Saturday" };
 	
-		public String weekdDay(int day) {
+		public String weekdDay(int day) throws IncorectDayException {
 			if(day == 1)
 				return "Sunday";
 			else if (day == 2)
@@ -21,7 +21,7 @@ public class CalendarUtil {
 			else if (day == 7)
 				return "Saturday";
 			
-			return null;
+			throw new IncorectDayException("From 1 to 7 only");
 	}
 		
 		public String weekDay2(int day) {
