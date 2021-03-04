@@ -1,6 +1,8 @@
 package ro.ase.csie.cts.seminar2;
 
 import ro.ase.csie.cts.seminar2.solid.BankAccount;
+import ro.ase.csie.cts.seminar2.solid.FeeBankAccount;
+import ro.ase.csie.cts.seminar2.solid.InsuficientFundsException;
 import ro.ase.csie.cts.seminar2.solid.Persoana;
 
 public class Main {
@@ -25,9 +27,25 @@ public class Main {
 		Persoana p = new Persoana("Diana");
 		BankAccount account = new BankAccount("INGB123456789",p);
 		account.deposit(100);
-		account.withdraw(50);
-		account.withdraw(70);
+		try {
+			account.withdraw(50);
+			account.withdraw(70);
+		} catch (InsuficientFundsException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
 		System.out.println(account.getBalance());
+		
+		FeeBankAccount fb = new FeeBankAccount("ING4664815",p); //putem prin polimorfism sa instantiem noul tip de clasa tot in account
+		fb.deposit(500);
+		try {
+			fb.withdraw(100);
+		} catch (InsuficientFundsException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println(fb.getBalance());
 
 
 	}
