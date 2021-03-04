@@ -6,25 +6,15 @@ public class Main {
         CalendarUtil cu = new CalendarUtil();
 		
 		try {
-			System.out.println(cu.weekdDay(9));
-		} catch (IncorectDayException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
+			System.out.println(cu.weekdDay(4));
 			System.out.println(cu.weekDay2(3));
-		} catch (IncorectDayException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
 			System.out.println(cu.weekDay3(3));
+			System.out.println(cu.weekDay4(10));
 		} catch (IncorectDayException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 
 	}
 

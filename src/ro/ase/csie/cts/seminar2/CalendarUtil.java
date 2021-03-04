@@ -1,5 +1,7 @@
 package ro.ase.csie.cts.seminar2;
 
+import java.text.DateFormatSymbols;
+
 public class CalendarUtil {
 	
 	private String[] days = {"Sunday","Monday","Tuesday","Wednesday",
@@ -24,7 +26,7 @@ public class CalendarUtil {
 			throw new IncorectDayException("From 1 to 7 only");
 	}
 		
-		public String weekDay2(int day) {
+		public String weekDay2(int day) throws IncorectDayException {
 			switch(day) {
 				case 1:
 					return "Sunday";
@@ -41,18 +43,28 @@ public class CalendarUtil {
 				case 7:
 					return "Saturday";
 				default:
-					return null;
+					throw new IncorectDayException("From 1 to 7 only");
 			}
 		}
 		
-		public String weekDay3(int day) {
+		public String weekDay3(int day) throws IncorectDayException {
 			
 			if(day > 0 && day <= days.length) {
 				return days[day-1];
 			}else {
-				return null;
+				throw new IncorectDayException("From 1 to 7 only");
 			}
 			
+		}
+		
+		public String weekDay4(int day) throws IncorectDayException {
+			String[] days = new DateFormatSymbols().getWeekdays();
+			
+			if(day > 0 && day <= days.length) {
+				return days[day-1];
+			}else {
+				throw new IncorectDayException("From 1 to 7 only");
+			}
 		}
 
 }
