@@ -3,17 +3,13 @@ package ro.ase.csie.cts.seminar3;
 import java.util.HashMap;
 import java.util.Map;
 
-import ro.ase.csie.cts.seminar2.solid.BankAccount;
-import ro.ase.csie.cts.seminar2.solid.FeeBankAccount;
-import ro.ase.csie.cts.seminar2.solid.InsuficientFundsException;
-import ro.ase.csie.cts.seminar2.solid.Persoana;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Persoana p = new Persoana("Diana");
-		BankAccount account = new BankAccount("INGB123456789",p);
+	    Persoana p = new Persoana("Diana");
+		DebitBankAccount account = new DebitBankAccount("INGB123456789",p);
 		account.deposit(100);
 		try {
 			account.withdraw(50);
@@ -23,29 +19,43 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 		
-		Map<Persoana, BankAccount> employees = new HashMap<>();
+		Map<Persoana, Receivable> employees = new HashMap<>();
 		
 		Persoana p1 = new Persoana("Chuck Norris");
-		BankAccount bankacc1 = new BankAccount("BRD564656",p1);
+		CreditBankAccount bankacc1 = new CreditBankAccount("BRD564656",p1,-500);
 		Persoana p2 = new Persoana("Arnold");
-		BankAccount bankacc2 = new FeeBankAccount("BRD797971",p2);
+		DebitBankAccount bankacc2 = new FeeBankAccount("BRD797971",p2);
 		Persoana p3 = new Persoana("Van Damme");
-		BankAccount bankacc3 = new BankAccount("ING123000",p3);
+		DebitBankAccount bankacc3 = new DebitBankAccount("ING123000",p3);
 		
 		employees.put(p1, bankacc1);
 		employees.put(p2, bankacc2);
 		employees.put(p3, bankacc3);
 		
-		for(BankAccount b : employees.values()) {
+		for(Receivable b : employees.values()) {
 			b.deposit(1000);
 		}
 		
-		for(BankAccount b : employees.values()) {
+		//deoarece interfata Receivable implementeaza doar functia deposit, nu mai putem
+		//lua bani de la persoane si trebuie sa facem un nou Map cu conturi Payable
+//		for(Receivable b : employees.values()) {
+//			try {
+//				b.withdraw(10);
+//			} catch (InsuficientFundsException e) {
+//				System.out.println(e.getMessage());
+//			}
+//		}
+		
+		//in acest map punem doar persoanele 2 si 3 deoarece acestea au conturi bancare de debit unde putem realiza operatia withdraw
+		Map<Persoana,Payable> union = new HashMap<>();
+		union.put(p2, bankacc2);
+		union.put(p3, bankacc3);
+		for(Payable b : union.values()) {
 			try {
 				b.withdraw(10);
 			} catch (InsuficientFundsException e) {
 				// TODO Auto-generated catch block
-				System.out.println(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 
