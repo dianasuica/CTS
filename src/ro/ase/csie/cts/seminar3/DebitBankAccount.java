@@ -1,10 +1,10 @@
 package ro.ase.csie.cts.seminar3;
 
-public class DebitBankAccount extends ReceivableBankAccount implements Payable {
+public class DebitBankAccount extends ReceivableBankAccount implements Payable,Transferable {
 	
 	
-	public DebitBankAccount(String iban,Persoana p) {
-		super(iban,p,0);
+	public DebitBankAccount(String iban,Persoana p,NotificationService notificationService) {
+		super(iban,p,0,notificationService);
 	}
 	
 	//deoarece DebitBankAccount poate si sa primeasca si sa extraga bani, se implementeaza ambele interfete
@@ -13,8 +13,20 @@ public class DebitBankAccount extends ReceivableBankAccount implements Payable {
 		if(amount > balance) {
 			throw new InsuficientFundsException("Not enough money");
 		}
-		System.out.println("withdrawing " + amount + " from " + iban);
+		this.notificationService.sendNotification(accountHolder, "withdrawing " + amount + " from " + this.iban);
 		balance -= amount;
+	}
+
+	@Override
+	public void transfer(Receivable destination, long amount) {
+		try {
+			this.withdraw(amount);
+			System.out.println("Transfering money");
+		} catch (InsuficientFundsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		destination.deposit(amount);
 	}
 
 }

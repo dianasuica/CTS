@@ -5,16 +5,22 @@ public class ReceivableBankAccount implements Receivable {
 	protected long balance;
 	protected String iban;
 	protected Persoana accountHolder;
+	protected NotificationService notificationService;
 	
-	public ReceivableBankAccount(String iban,Persoana accountHolder, long balance) {
+	public ReceivableBankAccount(NotificationService notificationService) {
+		this.notificationService = notificationService;
+	}
+	
+	public ReceivableBankAccount(String iban,Persoana accountHolder, long balance, NotificationService notificationService) {
 		this.iban = iban;
 		this.accountHolder = accountHolder;
 		this.balance = balance;
+		this.notificationService = notificationService;
 	}
 	
 	@Override
 	public void deposit(long amount) {
-		System.out.println("depositing " + amount + " in " + iban);
+		notificationService.sendNotification(accountHolder, "Adding " + amount + " to " + this.iban);
 		  this.balance += amount;
 	}
 	
@@ -41,6 +47,7 @@ public class ReceivableBankAccount implements Receivable {
 	public long getBalance() {
 		return balance;
 	}
+	
 	
 	
 

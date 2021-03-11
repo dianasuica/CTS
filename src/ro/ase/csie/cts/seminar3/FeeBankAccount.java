@@ -4,8 +4,8 @@ public class FeeBankAccount extends DebitBankAccount  {
 	
 	private long fee = 2;
 
-	public FeeBankAccount(String iban, Persoana persoana) {
-		super(iban, persoana);
+	public FeeBankAccount(String iban, Persoana persoana, NotificationService notificationService) {
+		super(iban, persoana,notificationService);
 		
 	}
 	
