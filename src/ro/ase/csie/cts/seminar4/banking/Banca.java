@@ -39,10 +39,10 @@ public class Banca {
 	   
 	    if(holder.getVarsta() >= 18 ) {
 	    	bankAccount = new FeeBankAccount(generateIban(), holder, 
-	    			              holder.getNotificationType().equals(Persoana.NotificationType.EMAIL)? emailnotificationService : smsnotificationService);
+	    			              holder.getNotificationType().getNotificationService());
 	    }else {
 	    	bankAccount = new DebitBankAccount(generateIban(), holder,  
-	    			              holder.getNotificationType().equals(Persoana.NotificationType.EMAIL)? emailnotificationService : smsnotificationService); 
+	    			              holder.getNotificationType().getNotificationService()); 
 	    }
 		
 		return bankAccount;

@@ -14,8 +14,25 @@ public class Persoana {
 	private NotificationType notificationType;
 	
 	public static enum NotificationType{
-		EMAIL,
-		SMS
+		EMAIL
+ {
+			@Override
+			public NotificationService getNotificationService() {
+				// TODO Auto-generated method stub
+				return new EmailNotificationService();
+			}
+		}	,
+ SMS
+		
+      {
+			@Override
+			public NotificationService getNotificationService() {
+				// TODO Auto-generated method stub
+				return new SMSNotificationService();
+			}
+		};
+		
+		public abstract NotificationService getNotificationService();
 	}
 	
 	public Persoana(String name) {
