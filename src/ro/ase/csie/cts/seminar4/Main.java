@@ -9,6 +9,7 @@ import ro.ase.csie.cts.seminar3.EmailNotificationService;
 import ro.ase.csie.cts.seminar3.NotificationService;
 import ro.ase.csie.cts.seminar3.Persoana;
 import ro.ase.csie.cts.seminar4.singleton.Elvis;
+import ro.ase.csie.cts.seminar4.singleton.ElvisVersiunea2;
 import ro.ase.csie.cts.seminar3.CreditBankAccount;
 
 public class Main {
@@ -35,9 +36,19 @@ public class Main {
 		System.out.println(b2.toString());
 		
 		//SINGLETON
-		Elvis elvis = Elvis.theTrueElvis;
+		//situatie1
+		//Elvis elvis = Elvis.theTrueElvis;
+		
+		//situatie2
+		Elvis elvis = Elvis.getInstance();
+		Elvis elvis2 = Elvis.getInstance();
 		System.out.println("\n----SINGLETON ELVIS----");
 		elvis.sing();
+		System.out.println(elvis == elvis2);
+		
+		//PRIN ENUM
+		ElvisVersiunea2 elvisVersiunea2 = ElvisVersiunea2.INSTANCE;
+		elvisVersiunea2.sing();
 	
 	}
 
