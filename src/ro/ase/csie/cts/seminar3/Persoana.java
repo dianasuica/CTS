@@ -7,6 +7,7 @@ public class Persoana {
 	private String name;
 	private String address;
 	private Date birthDate;
+	private int varsta;
 	private long salary;
 	private String email;
 	private String phone;
@@ -19,6 +20,19 @@ public class Persoana {
 	
 	public Persoana(String name) {
 		this.name = name;
+	}
+	
+	public Persoana(String name,int varsta) {
+		this.name = name;
+		this.varsta=varsta;
+	}
+	
+	public int getVarsta() {
+		return varsta;
+	}
+	
+	public void setVarsta(int varsta) {
+		this.varsta = varsta;
 	}
 	
 	public String getName() {
@@ -60,6 +74,14 @@ public class Persoana {
 	
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	public void setNotificationType(NotificationType notificationType) {
+		this.notificationType = notificationType;
+	}
+	
+	public NotificationType getNotificationType() {
+		return notificationType;
 	}
 	
 	
