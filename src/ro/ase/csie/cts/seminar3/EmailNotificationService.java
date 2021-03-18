@@ -5,7 +5,7 @@ public class EmailNotificationService implements NotificationService{
 	
 	@Override
 	public void sendNotification(Persoana destinatar, String msg) {
-		System.out.println("Sending email to " + destinatar.getEmail());
+		System.out.println("Sending email to " + destinatar.getEmail() + "msg: "  +msg);
 		
 	}
 
