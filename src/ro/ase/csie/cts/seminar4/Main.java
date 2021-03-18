@@ -8,6 +8,7 @@ import ro.ase.csie.cts.seminar3.DebitBankAccount;
 import ro.ase.csie.cts.seminar3.EmailNotificationService;
 import ro.ase.csie.cts.seminar3.NotificationService;
 import ro.ase.csie.cts.seminar3.Persoana;
+import ro.ase.csie.cts.seminar4.singleton.Elvis;
 import ro.ase.csie.cts.seminar3.CreditBankAccount;
 
 public class Main {
@@ -33,8 +34,11 @@ public class Main {
 		System.out.println(b.toString());
 		System.out.println(b2.toString());
 		
-		
-
+		//SINGLETON
+		Elvis elvis = Elvis.theTrueElvis;
+		System.out.println("\n----SINGLETON ELVIS----");
+		elvis.sing();
+	
 	}
 
 }
