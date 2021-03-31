@@ -18,6 +18,19 @@ public class TestBuilder {
 		//nu este Clean - este greu de scris, inteles, modificat
 		//atributul esteNegativ este deja false, nu are rost sa punem in constructor din nou ca false 
 		
+		
+		//VARIANTA CORECTA - BUILDER
+		SuperErou superman = new SuperErou.SuperErouBuilder("Superman", 5)
+				.adaugaArmaDreapta(new Arma())
+				.adaugaArmaStanga(new Arma())
+				.build();
+		//din acest moment nu mai pot fi modificate atributele!
+	
+	    SuperErou joker = new SuperErou.SuperErouBuilder("Joker", 3)
+	    		.esteNegativ()
+	    		.esteRanitGrav()
+	    		.adaugaArmaDreapta(new Arma())
+	    		.build();
 	}
 
 }
