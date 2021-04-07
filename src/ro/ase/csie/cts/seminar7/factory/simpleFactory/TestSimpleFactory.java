@@ -9,10 +9,14 @@ public class TestSimpleFactory {
 	    supererou = new CaracterMarvel("Spinderman", 150, 50);
         supererou = new CaracterDC("Batman", 150);
         
-        //cu simple factory
-        SuperErouAbstract superCaracter = FactorySuperErou.getSuperErou(TipErou.DISNEY,"Minnie");
-        superCaracter = FactorySuperErou.getSuperErou(TipErou.MARVEL,"SpiderMan");
-        superCaracter = FactorySuperErou.getSuperErou(TipErou.DC,"Batman");
+       
+        	//cu simple factory
+            SuperErouAbstract superCaracter = FactorySuperErou.getSuperErou(TipErou.DISNEY,"Minnie");
+            superCaracter = FactorySuperErou.getSuperErou(TipErou.MARVEL,"SpiderMan");
+            superCaracter = FactorySuperErou.getSuperErou(TipErou.DC,"Batman");
+       
+        
+	    
 	}
 
 }
