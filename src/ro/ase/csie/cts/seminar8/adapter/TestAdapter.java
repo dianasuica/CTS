@@ -24,6 +24,16 @@ public class TestAdapter {
 		
 		ArrayList<ACMECaracterJoc> caractere = new ArrayList<>();
 		caractere.add(dragon);
+		
+		//vrem sa introducem caracterul disney in lista acme => avem nevoie de adapter
+		AdaptorDisneyLaACME adaptorDonald = new AdaptorDisneyLaACME(donald);
+		caractere.add(adaptorDonald);
+		
+		System.out.println("----------------ADAPTOR----------------");
+		for( ACMECaracterJoc caracter : caractere ) {
+			caracter.seDeplaseaza();
+			caracter.esteLovit(50);
+		}
 	}
 
 }
