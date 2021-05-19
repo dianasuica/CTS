@@ -13,6 +13,6 @@ public class OperatiiMatematice {
 		if(b == 0) {
 			throw new ExceptieImpartireLaZero();
 		}
-		return a/b;
+		return (double)a/b;
 	}
 }
